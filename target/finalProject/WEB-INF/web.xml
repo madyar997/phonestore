@@ -1,0 +1,70 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.epam.tcfp.phonestore.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>SearchFilter</filter-name>
+    <filter-class>com.epam.tcfp.phonestore.filter.SearchFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SearchFilter</filter-name>
+    <url-pattern>/phonestore</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>SessionLocaleFilter</filter-name>
+    <filter-class>com.epam.tcfp.phonestore.filter.SessionLocaleFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SessionLocaleFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>AccessFilter</filter-name>
+    <filter-class>com.epam.tcfp.phonestore.filter.AccessFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AccessFilter</filter-name>
+    <url-pattern>/phonestore/admin/*</url-pattern>
+    <url-pattern>/phonestore/user/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>PhoneController</servlet-name>
+    <servlet-class>com.epam.tcfp.phonestore.controller.PhoneController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PhoneController</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.jpg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.png</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.ico</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+  </servlet-mapping>
+</web-app>
