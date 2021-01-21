@@ -13,8 +13,8 @@ public class ConnectionPool {
     private List<Connection>usedConnections = new ArrayList<Connection>();
     private final String driverName = "com.mysql.jdbc.Driver" ;
     private final String URL = "jdbc:mysql://localhost:3306/phonestore?useUnicode=true&amp;characterEncoding=utf8;autoReconnect=true&useSSL=false";
-    private final String USERID = "admin";
-    private final String PASSWORD = "mypass";
+    private final String USERID = "madyar";
+    private final String PASSWORD = "mdamdamda";
 
 
     private ConnectionPool() throws SQLException {
