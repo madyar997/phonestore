@@ -2,7 +2,6 @@ package com.epam.tcfp.phonestore.dao;
 
 import com.epam.tcfp.phonestore.constants.Constants;
 import com.epam.tcfp.phonestore.entity.Characteristics;
-import com.epam.tcfp.phonestore.entity.User;
 import com.epam.tcfp.phonestore.service.connection.ConnectionPool;
 import org.apache.log4j.Logger;
 

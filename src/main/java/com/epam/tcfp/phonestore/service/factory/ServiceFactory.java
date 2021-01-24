@@ -1,17 +1,14 @@
 package com.epam.tcfp.phonestore.service.factory;
+
 import com.epam.tcfp.phonestore.service.*;
 import com.epam.tcfp.phonestore.service.admin.*;
 import com.epam.tcfp.phonestore.service.user.EditUserPersonalDataService;
 import com.epam.tcfp.phonestore.service.user.UserHomeService;
 import com.epam.tcfp.phonestore.service.user.UserPersonalDataFormService;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 
 public class ServiceFactory {

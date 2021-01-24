@@ -1,12 +1,14 @@
 package com.epam.tcfp.phonestore.dao;
 
 import com.epam.tcfp.phonestore.constants.Constants;
-import com.epam.tcfp.phonestore.entity.Brand;
 import com.epam.tcfp.phonestore.entity.User;
 import com.epam.tcfp.phonestore.service.connection.ConnectionPool;
 import org.apache.log4j.Logger;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +75,7 @@ public class UserDao {
             statement = connection.prepareStatement(GET_USER_BY_EMAIL);
             statement.setString(1, email);
             rs = statement.executeQuery();
-            if(rs != null){
+            if(rs == null){
                     isRegistered = false;
             }
         } catch (SQLException e) {
@@ -135,8 +137,7 @@ public class UserDao {
         return user;
     }
 
-    public int insertUser(User user) {
-        int result = 0;
+    public void insertUser(User user) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -149,7 +150,7 @@ public class UserDao {
             preparedStatement.setInt(5, user.getRole());
             preparedStatement.setString(6, user.getAddress());
             preparedStatement.setString(7, user.getPassword());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             log.error("SQL exception in UserDao::insertUser . full stack trace follows:", e);
         } finally {
@@ -163,18 +164,16 @@ public class UserDao {
 
             }
         }
-        return result;
     }
 
-    public int deleteUser(int id) {
-        int result = 0;
+    public void deleteUser(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
             connection = connectionPool.getConnection();
             statement = connection.prepareStatement(DELETE_USER);
             statement.setInt(1, id);
-            result = statement.executeUpdate();
+            statement.executeUpdate();
         } catch (SQLException e) {
             log.error("SQL exception in UserDao::deleteUser . full stack trace follows:", e);
         }finally {
@@ -188,10 +187,8 @@ public class UserDao {
 
             }
         }
-        return result;
     }
-    public boolean updateUser(User user){
-        boolean result = false;
+    public void updateUser(User user){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -205,7 +202,7 @@ public class UserDao {
             preparedStatement.setString(6, user.getAddress());
             preparedStatement.setString(7, user.getPassword());
             preparedStatement.setInt(8, user.getUserId());
-            result = preparedStatement.executeUpdate()>0;
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             log.error("SQL exception in UserDao::updateUser . full stack trace follows:", e);
         } finally {
@@ -218,7 +215,6 @@ public class UserDao {
                 log.error("SQL exception in UserDao::updateUser in finally block . full stack trace follows:", e);
             }
         }
-        return result;
     }
 
     public User selectUser(int id){
@@ -265,7 +261,7 @@ public class UserDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet rs = null;
-        User user = null;
+        User user;
         try {
             connection = connectionPool.getConnection();
             statement = connection.prepareStatement(SELECT_ALL_USERS);

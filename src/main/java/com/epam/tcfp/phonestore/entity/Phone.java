@@ -137,16 +137,4 @@ public class Phone {
         return Objects.hash(id);
     }
 
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Phone phone = (Phone) o;
-//        return brand == phone.brand && modelYear == phone.modelYear && Float.compare(phone.price, price) == 0 && Objects.equals(model, phone.model) && Objects.equals(color, phone.color) && Objects.equals(picture, phone.picture) && Objects.equals(description, phone.description) && Objects.equals(details, phone.details);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(brand, model, color, modelYear, price, picture, description, details);
-//    }
 }

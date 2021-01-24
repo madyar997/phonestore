@@ -1,9 +1,8 @@
 package com.epam.tcfp.phonestore.entity;
+
 import com.epam.tcfp.phonestore.constants.Constants;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Cart {
@@ -43,7 +42,7 @@ public class Cart {
         for (Map.Entry<Phone, Integer> phoneItem : this.productList.entrySet()) {
             float phoneCost = phoneItem.getKey().getPrice();
             int quantity = phoneItem.getValue();
-            this.totalCost += phoneCost*quantity;
+            this.totalCost += phoneCost * quantity;
         }
         return this.totalCost;
     }
@@ -55,6 +54,7 @@ public class Cart {
         }
         return this.totalQuantity;
     }
+
     public void setTotalQuantity(int totalQuantity) {
         this.totalQuantity = totalQuantity;
     }

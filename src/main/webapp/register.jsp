@@ -22,34 +22,49 @@
 
         <form action="/phonestore/register" class="form" method="post" accept-charset="UTF-8">
             <div class="form_wrap">
-
-                    <div class="input_wrap">
-                        <input type="text" name="first_name" placeholder="<fmt:message key="label.first_name"/>" required>
-                    </div>
-                    <div class="input_wrap">
-                        <input type="text" name="second_name" placeholder="<fmt:message key="label.second_name"/>" required>
-                    </div>
-
+                <label for="first_name"><fmt:message key="label.first_name"/>: </label>
                 <div class="input_wrap">
-                    <input type="email" name="email" placeholder="<fmt:message key="label.email"/>" required>
+                    <input type="text" id="first_name" name="first_name"  required>
                 </div>
 
+                <label for="second_name"><fmt:message key="label.second_name"/>: </label>
                 <div class="input_wrap">
-                    <input type="tel" name="phone_number" min="10" max="11"  placeholder="<fmt:message key="label.phone_number"/>" required>
+                    <input type="text" id="second_name" name="second_name"  required>
                 </div>
 
+                <label for="email"><fmt:message key="label.email"/>: (example@example.com)</label>
                 <div class="input_wrap">
-                    <input type="text" name="address" placeholder="<fmt:message key="label.address"/>" required>
+                    <input type="email" id="email" name="email" required>
                 </div>
 
+
+                <label for="phone_number"><fmt:message key="label.phone_number"/> (+7XXXXXXXXXX): </label>
                 <div class="input_wrap">
-                    <input type="password" class="password" name="password" placeholder="<fmt:message key="label.password"/>" required>
+                    <input type="text" id="phone_number"  name="phone_number"
+                         pattern="^((\+7|7|8)+([0-9]){10})$"  required>
                 </div>
 
+
+                <label for="address"><fmt:message key="label.address"/>: </label>
                 <div class="input_wrap">
-                    <input type="password" class="confirm_password" name="confirm_password" placeholder="<fmt:message key="label.confirm_password"/>" required>
+                    <input type="text" id="address" name="address" required>
                 </div>
-                <div class="error" style="height: 50px"></div>
+
+                <label for="password"><fmt:message key="label.password"/>:</label>
+                <div class="input_wrap">
+                    <input type="password" class="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$"
+                           onkeyup="check()" required>
+                </div>
+
+
+                <label for="confirm_password"><fmt:message key="label.confirm_password"/>:</label>
+                <div class="input_wrap">
+                    <input type="password" class="confirm_password" id="confirm_password" name="confirm_password"
+                           pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$" onkeyup="check()" required>
+                </div>
+                <div class="error" style="height: 50px">
+                    <span id="error"></span>
+                </div>
                 <div class="input_wrap">
                     <input type="submit" value="<fmt:message key="label.register"/>" class="submit_btn" id="submit">
                 </div>

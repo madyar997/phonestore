@@ -3,8 +3,10 @@ package com.epam.tcfp.phonestore.service;
 import com.epam.tcfp.phonestore.constants.Constants;
 import com.epam.tcfp.phonestore.dao.CustomerOrderDao;
 import com.epam.tcfp.phonestore.dao.OrderPhoneDao;
-import com.epam.tcfp.phonestore.entity.*;
-
+import com.epam.tcfp.phonestore.entity.Cart;
+import com.epam.tcfp.phonestore.entity.CustomerOrder;
+import com.epam.tcfp.phonestore.entity.Phone;
+import com.epam.tcfp.phonestore.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

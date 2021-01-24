@@ -1,7 +1,6 @@
 package com.epam.tcfp.phonestore.filter;
 
 import com.epam.tcfp.phonestore.constants.Constants;
-import com.epam.tcfp.phonestore.dao.OrderPhoneDao;
 import com.epam.tcfp.phonestore.entity.User;
 import org.apache.log4j.Logger;
 

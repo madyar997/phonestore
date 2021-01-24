@@ -1,7 +1,6 @@
 package com.epam.tcfp.phonestore.service;
 
 import com.epam.tcfp.phonestore.constants.Constants;
-import com.epam.tcfp.phonestore.dao.PhoneDao;
 import com.epam.tcfp.phonestore.entity.Cart;
 import com.epam.tcfp.phonestore.entity.Phone;
 
@@ -18,7 +17,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class ChangeQuantityService implements Service{
-    PhoneDao phoneDao = new PhoneDao();
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         HttpSession session = request.getSession();

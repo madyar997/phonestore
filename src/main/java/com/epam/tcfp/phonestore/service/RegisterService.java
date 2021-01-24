@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -24,14 +25,30 @@ public class RegisterService implements Service {
         if (!userDao.isRegisteredCheck(request.getParameter(Constants.EMAIL))) {
             if (DigestUtils.md5Hex(request.getParameter(Constants.PASSWORD)).equals(DigestUtils.md5Hex(request.getParameter(Constants.CONFIRM_PASSWORD)))) {
                 user = new User();
-                user.setFirstName(request.getParameter(Constants.FIRST_NAME));
-                user.setSecondName(request.getParameter(Constants.SECOND_NAME));
-                user.setEmail(request.getParameter(Constants.EMAIL));
-                user.setPhoneNumber(request.getParameter(Constants.PHONE_NUMBER));
-                user.setAddress(request.getParameter(Constants.ADDRESS));
-                user.setPassword(DigestUtils.md5Hex(request.getParameter(Constants.PASSWORD)));
-                if (userDao.registerUser(user)) {
-                    result = "registered successfully";
+                if (request.getParameter(Constants.FIRST_NAME) == null |
+                        request.getParameter(Constants.FIRST_NAME).equals("") |
+                        request.getParameter(Constants.SECOND_NAME) == null |
+                        request.getParameter(Constants.SECOND_NAME).equals("") |
+                        request.getParameter(Constants.EMAIL) == null |
+                        request.getParameter(Constants.EMAIL).equals("") |
+                        request.getParameter(Constants.PHONE_NUMBER) == null |
+                        request.getParameter(Constants.PHONE_NUMBER).equals("") |
+                        request.getParameter(Constants.ADDRESS) == null |
+                        request.getParameter(Constants.ADDRESS).equals("") |
+                        request.getParameter(Constants.PASSWORD) == null |
+                        request.getParameter(Constants.PASSWORD).equals("")) {
+                    result = "Check if you filled all the fields";
+                }
+                else{
+                    user.setFirstName(request.getParameter(Constants.FIRST_NAME));
+                    user.setSecondName(request.getParameter(Constants.SECOND_NAME));
+                    user.setEmail(request.getParameter(Constants.EMAIL));
+                    user.setPhoneNumber(request.getParameter(Constants.PHONE_NUMBER));
+                    user.setAddress(request.getParameter(Constants.ADDRESS));
+                    user.setPassword(DigestUtils.md5Hex(request.getParameter(Constants.PASSWORD)));
+                    if (userDao.registerUser(user)) {
+                        result = "registered successfully";
+                    }
                 }
             } else {
                 result = "Passwords do not match";
