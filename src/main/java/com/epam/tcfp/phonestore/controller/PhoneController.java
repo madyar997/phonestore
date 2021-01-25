@@ -23,13 +23,6 @@ public class PhoneController extends HttpServlet{
     private final ServiceFactory serviceFactory = ServiceFactory.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Properties props = new Properties();
-        try {
-            props.load(new FileInputStream(LOG_PROPERTIES_FILE));
-        } catch (IOException e) {
-            throw new RuntimeException("Unable to load logging property " + LOG_PROPERTIES_FILE);
-        }
-        PropertyConfigurator.configure(props);
         String requestUri = req.getRequestURI().toLowerCase();
         Service currentService = serviceFactory.getService(requestUri);
         try{
