@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/phonestore"><fmt:message key="label.home"/></a>
                 </li>
                 <li class="nav-item ${pageContext.request.requestURI eq '/contact.jsp' ? ' active' : ''}">
-                    <a class="nav-link" href="/contacts.jsp"><fmt:message key="label.contacts"/></a>
+                    <a class="nav-link" href="/phonestore/contacts"><fmt:message key="label.contacts"/></a>
                 </li>
                 <li class="nav-item ${pageContext.request.requestURI eq '/cart.jsp' ? ' active' : ''}">
                     <a class="nav-link" href="/phonestore/cart"><fmt:message key="label.cart"/> <span class="sr-only">(current)</span></a>
@@ -63,16 +63,15 @@
                 </c:choose>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" action="/phonestore/search" method="post">
                 <div class="input-group input-group-sm">
-                        <input type="search" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                               placeholder="<fmt:message key="label.search_model"/>..." name="search" >
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                               placeholder="<fmt:message key="label.search_model"/>..." name="search">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-secondary btn-number">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
-
                 </div>
                 <a class="btn btn-success btn-sm ml-3" href="/phonestore/cart">
                     <i class="fa fa-shopping-cart"></i> <fmt:message key="label.cart"/>

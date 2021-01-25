@@ -33,6 +33,8 @@ public class ServiceFactory {
         SERVICE_MAP.put("/PHONESTORE/CHECKOUT", new CheckoutService());
         SERVICE_MAP.put("/PHONESTORE/ORDER-CONFIRMATION", new OrderConfirmationService());
         SERVICE_MAP.put("/PHONESTORE/BRAND", new BrandSearchService());
+        SERVICE_MAP.put("/PHONESTORE/SEARCH", new SearchService());
+        SERVICE_MAP.put("/PHONESTORE/CONTACTS", new ContactsService());
 
         SERVICE_MAP.put("/PHONESTORE/VIEW", new ViewProductService());
 

@@ -36,7 +36,7 @@
             <p class="price">${phone.price} KZT</p>
             <p class="memory">${phone.characteristics["memory"]}</p>
             <p class="color">${phone.color}</p>
-            <a href="/phonestore/cart/add?id=${phone.id}" class="button"><fmt:message key="label.add-to-card" /></a>
+            <a href="/phonestore/cart/add?id=${phone.id}" name="${phone.id}" class="button"><fmt:message key="label.add-to-card" /></a>
         </div>
     </c:forEach>
 </section>
