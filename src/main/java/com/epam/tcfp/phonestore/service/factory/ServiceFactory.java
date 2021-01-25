@@ -16,8 +16,10 @@ public class ServiceFactory {
     private static final ServiceFactory SERVICE_FACTORY = new ServiceFactory();
     private static final Logger log = Logger.getLogger(ServiceFactory.class.getName());
 
-    private ServiceFactory() {}
-    static{
+    private ServiceFactory() {
+    }
+
+    static {
         SERVICE_MAP.put("/PHONESTORE", new HomeService());
         SERVICE_MAP.put("/PHONESTORE/LOGIN/FORM", new LoginFormService());
         SERVICE_MAP.put("/PHONESTORE/LOGIN", new LoginService());
@@ -53,18 +55,20 @@ public class ServiceFactory {
         SERVICE_MAP.put("/PHONESTORE/USER/HOME", new UserHomeService());
         SERVICE_MAP.put("/PHONESTORE/USER/PERSONAL-DATA-FORM", new UserPersonalDataFormService());
         SERVICE_MAP.put("/PHONESTORE/USER/EDIT/PERSONAL-DATA", new EditUserPersonalDataService());
+        SERVICE_MAP.put("/ERROR", new ErrorService());
     }
-    public Service getService(String request){
-        Service service = SERVICE_MAP.get("/ERROR");
-        for(Map.Entry<String, Service> pair : SERVICE_MAP.entrySet()){
-            if(request.equalsIgnoreCase(pair.getKey())){
-                service = SERVICE_MAP.get(pair.getKey());
-                log.info("current service is "+ service.toString());
-            }
+
+    public Service getService(String request) {
+        Service service;
+        service = SERVICE_MAP.get(request.toUpperCase());
+        if(service == null){
+            service = SERVICE_MAP.get("/ERROR");
         }
+        log.info("current service is " + service.toString());
         return service;
     }
-    public static ServiceFactory getInstance(){
+
+    public static ServiceFactory getInstance() {
         return SERVICE_FACTORY;
     }
 }
