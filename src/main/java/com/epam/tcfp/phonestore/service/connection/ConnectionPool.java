@@ -4,20 +4,25 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
+import java.util.concurrent.*;
 
 
 public class ConnectionPool {
     private static final Logger log = Logger.getLogger(ConnectionPool.class.getName());
     private static ConnectionPool instance = null;
-    private List<Connection> availableConnections = new ArrayList<Connection>();
-    private List<Connection>usedConnections = new ArrayList<Connection>();
+    private BlockingQueue<Connection> availableConnections;
+    private BlockingQueue<Connection> usedConnections;
+    private ResourceBundle properties = ResourceBundle.getBundle("connection");
     private final String driverName = "com.mysql.jdbc.Driver" ;
     private final String URL = "jdbc:mysql://localhost:3306/phonestore?useUnicode=true&amp;characterEncoding=utf8;autoReconnect=true&useSSL=false";
     private final String USERID = "madyar";
     private final String PASSWORD = "mdamdamda";
 
-
     private ConnectionPool() throws SQLException {
+        availableConnections = new ArrayBlockingQueue<>(Constants.MAX_CONNECTIONS);
+        usedConnections = new ArrayBlockingQueue<>(Constants.MAX_CONNECTIONS);
+
         for (int count = 0; count < Constants.MAX_CONNECTIONS; count++) {
             availableConnections.add(this.createConnection());
         }
@@ -43,34 +48,31 @@ public class ConnectionPool {
         try {
             Class.forName(driverName);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            log.error("Class not found exception. full stack trace follows:", e);
         }
         return DriverManager.getConnection(this.URL, this.USERID, this.PASSWORD);
     }
 
     public Connection getConnection() {
         if (availableConnections.size() == 0) {
-            System.out.println("All connections are Used !!");
+            log.error("All connection in connection pool are used!");
             return null;
         } else {
-            Connection con =
-                    availableConnections.remove(
-                            availableConnections.size() - 1);
-            usedConnections.add(con);
+            Connection con = null;
+            try {
+                con = availableConnections.take();
+                usedConnections.add(con);
+            } catch (InterruptedException e) {
+                log.error("All connections in connection pool are used!");
+            }
             return con;
         }
     }
 
-    public boolean releaseConnection(Connection con) {
+    public void releaseConnection(Connection con) {
         if (null != con) {
             usedConnections.remove(con);
             availableConnections.add(con);
-            return true;
         }
-        return false;
-    }
-
-    public int getFreeConnectionCount() {
-        return availableConnections.size();
     }
 }

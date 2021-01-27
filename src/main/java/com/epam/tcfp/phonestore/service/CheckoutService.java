@@ -26,7 +26,5 @@ public class CheckoutService implements Service{
             RequestDispatcher dispatcher = request.getRequestDispatcher("/phonestore/login/form");
             dispatcher.forward(request, response);
         }
-
-
     }
 }

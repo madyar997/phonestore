@@ -23,8 +23,8 @@ public class AddToCartService implements Service {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         HttpSession session = request.getSession();
-        Cart cart = null;
-        Map<Phone, Integer> productList = null;
+        Cart cart;
+        Map<Phone, Integer> productList;
         if (session.getAttribute(Constants.CART) == null) {
             cart = new Cart();
             productList = new HashMap<>();

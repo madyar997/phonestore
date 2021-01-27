@@ -88,7 +88,6 @@ public class CustomerOrder {
         this.customerId = customerId;
     }
 
-
     public String getStatus() {
         return status;
     }

@@ -3,20 +3,13 @@ package com.epam.tcfp.phonestore.controller;
 import com.epam.tcfp.phonestore.service.Service;
 import com.epam.tcfp.phonestore.service.factory.ServiceFactory;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Properties;
-
-import static com.epam.tcfp.phonestore.constants.Constants.LOG_PROPERTIES_FILE;
-
 
 public class PhoneController extends HttpServlet{
     private static final Logger log = Logger.getLogger(PhoneController.class.getName());

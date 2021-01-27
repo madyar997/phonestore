@@ -1,12 +1,8 @@
 package com.epam.tcfp.phonestore.constants;
 
 public class Constants {
-    private Constants() {
-    }
-    public static final String LOG_PROPERTIES_FILE = "C:\\Users\\user\\Desktop\\epam_my_final\\epam_my_final\\src\\main\\resources\\log4j.properties";
     public static final int MAX_CONNECTIONS = 5;
     public static final int DEFAULT_QUANTITY = 1;
-
     public static final int ID_ADMIN = 1;
     public static final float SHIPPING_COST = 500;
     public static final String ID = "id";
@@ -15,7 +11,6 @@ public class Constants {
     public static final String SEARCH = "search";
     public static final String BRANDS = "brands";
     public static final String BRAND = "brand";
-
     public static final String PHONES = "phones";
     public static final String PHONE = "phone";
     public static final String SESSION_LOCALE = "sessionLocale";
@@ -24,7 +19,6 @@ public class Constants {
     public static final String ORDERS = "orders";
     public static final String CART = "cart";
     public static final String IS_LOGIN_FOR_CHECKOUT = "isLoginForCheckout";
-
     public static final String MEMORY = "memory";
     public static final String DISPLAY = "display";
     public static final String SCREEN_SIZE = "screen_size";

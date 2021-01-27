@@ -27,7 +27,6 @@ public class AdminCreateUserService implements Service {
         user.setRole(Integer.parseInt(request.getParameter(Constants.ROLE)));
         user.setAddress(request.getParameter(Constants.ADDRESS));
         user.setPassword(DigestUtils.md5Hex(request.getParameter(Constants.PASSWORD)));
-        //TODO добавить сюда проверку пароля
         userDao.insertUser(user);
         List<User> users = userDao.selectAllUsers();
         request.setAttribute(Constants.USERS, users);
