@@ -53,6 +53,10 @@ public class ServiceFactory {
         SERVICE_MAP.put("/PHONESTORE/ADMIN/PRODUCT-MANAGEMENT/ADD", new AdminProductAddService());
         SERVICE_MAP.put("/PHONESTORE/ADMIN/PRODUCT-MANAGEMENT/ADD-FORM", new AdminProductAddFormService());
         SERVICE_MAP.put("/PHONESTORE/ADMIN/PRODUCT-MANAGEMENT/DELETE", new AdminProductDeleteService());
+        SERVICE_MAP.put("/PHONESTORE/ADMIN/ORDER-MANAGEMENT", new AdminOrderService());
+        SERVICE_MAP.put("/PHONESTORE/ADMIN/ORDER-MANAGEMENT/EDIT/FORM", new AdminOrderEditFormService());
+        SERVICE_MAP.put("/PHONESTORE/ADMIN/ORDER-MANAGEMENT/EDIT", new AdminOrderEditService());
+        SERVICE_MAP.put("/PHONESTORE/ADMIN/ORDER-MANAGEMENT/DELETE", new AdminOrderDeleteService());
 
         SERVICE_MAP.put("/PHONESTORE/USER/HOME", new UserHomeService());
         SERVICE_MAP.put("/PHONESTORE/USER/PERSONAL-DATA-FORM", new UserPersonalDataFormService());

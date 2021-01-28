@@ -15,8 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class UserHomeService implements Service {
@@ -27,7 +25,7 @@ public class UserHomeService implements Service {
         User user = (User) session.getAttribute(Constants.USER);
         orderDao = new CustomerOrderDao();
         int userId = user.getUserId();
-        Map<CustomerOrder, Map<Phone, Integer>> orders = orderDao.selectAllOrders(userId);
+        Map<CustomerOrder, Map<Phone, Integer>> orders = orderDao.selectAllOrdersByUserId(userId);
         request.setAttribute(Constants.USER, user);
         request.setAttribute(Constants.ORDERS, orders);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/user-home.jsp");

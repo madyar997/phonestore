@@ -17,6 +17,7 @@
 <div id="container">
     <li><a href="/phonestore/admin/product-management"><fmt:message key="label.product_management"/></a></li>
     <li style="padding-top: 20px"><a href="/phonestore/admin/user-management"><fmt:message key="label.user_management"/></a></li>
+    <li style="padding-top: 20px"><a href="/phonestore/admin/order-management"><fmt:message key="label.order_management"/></a></li>
 </div>
 </body>
 </html>

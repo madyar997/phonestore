@@ -64,5 +64,6 @@ public class Constants {
     public static final String IN_PROCESS = "in process";
     public static final String ORDER_ID = "orderID";
     public static final String RESULT = "result";
+    public static final String ORDER = "order";
 
 }
