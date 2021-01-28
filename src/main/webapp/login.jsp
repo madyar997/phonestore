@@ -24,7 +24,7 @@
                     <input type="email" name="email" placeholder="<fmt:message key="label.email"/>">
                 </div>
                 <div class="input_wrap">
-                    <input type="password" name="password" placeholder="<fmt:message key="label.password"/>">
+                    <input type="password" name="password" placeholder="<fmt:message key="label.login_password"/>">
                 </div>
                 <div class="input_wrap">
                     <input type="submit" value="<fmt:message key="label.login"/>" class="submit_btn">

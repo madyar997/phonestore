@@ -15,8 +15,6 @@
 <jsp:include page="header.jsp"/>
 <br>
 <div class="row">
-    <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
-
     <div class="container">
         <div class="container text-left">
             <a style="font-family: 'Segoe UI',sans-serif;font-weight: bold;font-size: 2rem"><fmt:message key="label.personal_data"/></a>
@@ -34,7 +32,6 @@
             </tr>
             </thead>
             <tbody>
-            <!--   for (Todo todo: todos) {  -->
 
                 <tr>
 
@@ -58,7 +55,6 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
-            <!-- } -->
             </tbody>
 
         </table>
@@ -87,7 +83,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!--   for (Todo todo: todos) {  -->
 
                     <tr>
 

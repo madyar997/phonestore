@@ -41,8 +41,8 @@
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label><fmt:message key="label.phone_number"/></label> <input type="tel" value="<c:out value='${user.phoneNumber}' />"
-                                                       class="form-control" name="phone_number">
+                    <label><fmt:message key="label.phone_number"/></label> <input type="text" value="<c:out value='${user.phoneNumber}' />"
+                                  pattern="^((\+7|7|8)+([0-9]){10})$" class="form-control" name="phone_number">
                 </fieldset>
 
 

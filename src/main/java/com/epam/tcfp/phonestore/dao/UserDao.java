@@ -75,7 +75,7 @@ public class UserDao {
             statement = connection.prepareStatement(GET_USER_BY_EMAIL);
             statement.setString(1, email);
             rs = statement.executeQuery();
-            if(rs == null){
+            if(!rs.next()){
                     isRegistered = false;
             }
         } catch (SQLException e) {

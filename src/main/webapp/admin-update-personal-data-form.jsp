@@ -5,14 +5,12 @@
 <fmt:setBundle basename="resources" scope="session"/>
 <fmt:setLocale value="${sessionScope.lang}" scope="session" />
 <html>
-
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <title>Add new user</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
 <jsp:include page="header.jsp"/>
 <br>
@@ -37,16 +35,16 @@
 
                     <fieldset class="form-group">
                         <label><fmt:message key="label.email"/></label> <input type="email" value="<c:out value='${user.email}' />"
-                                                    class="form-control" name="email">
+                                   class="form-control" name="email">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label><fmt:message key="label.phone_number"/></label> <input type="tel" value="<c:out value='${user.phoneNumber}' />"
+                        <label><fmt:message key="label.phone_number"/></label> <input type="number" value="<c:out value='${user.phoneNumber}' />"
                                                            class="form-control" name="phone_number">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label><fmt:message key="label.role"/></label> <input type="text" value="<c:out value='${user.role}' />"
+                        <label><fmt:message key="label.role"/></label> <input type="number" value="<c:out value='${user.role}' />"
                                                    class="form-control" name="role">
                     </fieldset>
 

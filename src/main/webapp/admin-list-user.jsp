@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <!--   for (Todo todo: todos) {  -->
+
             <c:forEach var="user" items="${users}">
 
                 <tr>
@@ -77,7 +77,6 @@
                     </td>
                 </tr>
             </c:forEach>
-            <!-- } -->
             </tbody>
 
         </table>

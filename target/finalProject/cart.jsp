@@ -17,7 +17,6 @@
 <body>
 <jsp:include page="header.jsp"/>
 
-<!------ Include the above in your HEAD tag ---------->
 
 <div class="container mb-4">
     <div class="row">
