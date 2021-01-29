@@ -12,7 +12,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class DeleteFromCartService implements Service {
     @Override
@@ -20,12 +22,11 @@ public class DeleteFromCartService implements Service {
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute(Constants.CART);
         int id = Integer.parseInt(request.getParameter(Constants.ID));
+
         Map<Phone, Integer> productList = ((Cart) session.getAttribute(Constants.CART)).getProductList();
-        for (Map.Entry<Phone, Integer> productItem : productList.entrySet()) {
-            if (id == productItem.getKey().getId()) {
-                productList.remove(productItem.getKey());
-            }
-        }
+        Set<Map.Entry<Phone, Integer>> setOfEntries = productList.entrySet();
+        setOfEntries.removeIf(entry -> id == entry.getKey().getId());
+
         cart.setProductList(productList);
         cart.setTotalQuantity(cart.getTotalQuantity());
         cart.setTotalCost(cart.getTotalCost() + cart.getShipping());

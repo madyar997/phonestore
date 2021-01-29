@@ -24,7 +24,7 @@
         <hr>
         <div class="container text-left">
 
-            <a href="/phonestore/admin/user-management/create/form" class="btn btn-success">Add New User</a>
+            <a href="/phonestore/admin/user-management/create/form" class="btn btn-success"><fmt:message key="label.add_user"/></a>
         </div>
         <br>
         <table class="table table-bordered">
@@ -71,9 +71,9 @@
                         <c:out value="${user.password}"/>
                     </td>
                     <td>
-                        <a href="/phonestore/admin/user-management/edit/form?id=<c:out value='${user.userId}' />">Edit</a>
+                        <a href="/phonestore/admin/user-management/edit/form?id=<c:out value='${user.userId}' />"><fmt:message key="label.edit"/></a>
                         &nbsp;&nbsp;&nbsp;&nbsp; <a
-                            href="/phonestore/admin/user-management/delete?id=<c:out value='${user.userId}' />">Delete</a>
+                            href="/phonestore/admin/user-management/delete?id=<c:out value='${user.userId}' />"><fmt:message key="label.delete"/></a>
                     </td>
                 </tr>
             </c:forEach>

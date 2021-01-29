@@ -47,7 +47,7 @@
 
 
                 <fieldset class="form-group">
-                    <label>A<fmt:message key="label.address"/></label> <input type="text" value="<c:out value='${user.address}' />"
+                    <label><fmt:message key="label.address"/></label> <input type="text" value="<c:out value='${user.address}' />"
                                                   class="form-control" name="address">
                 </fieldset>
 
