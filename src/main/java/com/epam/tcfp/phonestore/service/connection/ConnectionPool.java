@@ -1,11 +1,14 @@
 package com.epam.tcfp.phonestore.service.connection;
+
 import com.epam.tcfp.phonestore.constants.Constants;
 import org.apache.log4j.Logger;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.concurrent.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 
 public class ConnectionPool {

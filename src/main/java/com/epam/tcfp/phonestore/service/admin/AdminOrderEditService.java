@@ -4,7 +4,6 @@ import com.epam.tcfp.phonestore.constants.Constants;
 import com.epam.tcfp.phonestore.dao.CustomerOrderDao;
 import com.epam.tcfp.phonestore.entity.CustomerOrder;
 import com.epam.tcfp.phonestore.entity.Phone;
-import com.epam.tcfp.phonestore.entity.User;
 import com.epam.tcfp.phonestore.service.Service;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.List;
 import java.util.Map;
 
 public class AdminOrderEditService implements Service {

@@ -2,7 +2,6 @@ package com.epam.tcfp.phonestore.service.admin;
 
 import com.epam.tcfp.phonestore.constants.Constants;
 import com.epam.tcfp.phonestore.dao.CustomerOrderDao;
-import com.epam.tcfp.phonestore.dao.OrderPhoneDao;
 import com.epam.tcfp.phonestore.entity.CustomerOrder;
 import com.epam.tcfp.phonestore.service.Service;
 

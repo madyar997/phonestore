@@ -4,6 +4,7 @@ import com.epam.tcfp.phonestore.constants.Constants;
 import com.epam.tcfp.phonestore.entity.Brand;
 import com.epam.tcfp.phonestore.service.connection.ConnectionPool;
 import org.apache.log4j.Logger;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
