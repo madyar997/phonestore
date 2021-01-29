@@ -27,10 +27,10 @@ CREATE TABLE characteristics
 CREATE TABLE user
 (
     id           bigint      NOT NULL AUTO_INCREMENT,
-    first_name   varchar(30) NOT NULL,
-    second_name  varchar(30) NOT NULL,
-    email        varchar(30) NOT NULL UNIQUE,
-    phone_number varchar(14) NOT NULL,
+    first_name   varchar(50) NOT NULL,
+    second_name  varchar(50) NOT NULL,
+    email        varchar(50) NOT NULL UNIQUE,
+    phone_number varchar(20) NOT NULL,
     role         int         DEFAULT '0',
     address      varchar(100) NOT NULL,
     password     varchar(100) NOT NULL,
@@ -41,26 +41,26 @@ CREATE TABLE customerorder
 (
     id               bigint NOT NULL AUTO_INCREMENT,
     customer_id      bigint       NOT NULL,
+    constraint fk_orders_users_customers_id
+        foreign key (customer_id) references user (id) on delete cascade on update cascade,
     date             varchar(20)  NOT NULL,
-    status           varchar(20)  NOT NULL,
+    status           varchar(50)  NOT NULL,
     shipping_address varchar(100) NOT NULL,
-    full_name        varchar(20)  NOT NULL,
-    phone_number     varchar(13)  NOT NULL,
-    city             varchar(20)  NOT NULL,
+    full_name        varchar(100)  NOT NULL,
+    phone_number     varchar(20)  NOT NULL,
+    city             varchar(50)  NOT NULL,
     zip              varchar(7)   NOT NULL,
     details          varchar(50)  DEFAULT NULL,
     total_cost       float        NOT NULL,
-    PRIMARY KEY (id),
-    KEY fk_order_customer_id (customer_id),
-    CONSTRAINT fk_order_customer_id FOREIGN KEY (customer_id) REFERENCES user (id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE phone
 (
     id                 int         NOT NULL AUTO_INCREMENT,
     brand_id           int         NOT NULL,
-    model              varchar(20) NOT NULL,
-    color              varchar(20) DEFAULT NULL,
+    model              varchar(50) NOT NULL,
+    color              varchar(50) DEFAULT NULL,
     model_year         int         DEFAULT NULL,
     price              float       NOT NULL,
     picture_path       text,
@@ -71,8 +71,8 @@ CREATE TABLE phone
     PRIMARY KEY (id),
     KEY fk_phone_brand_id (brand_id),
     KEY fk_phone_characteristic_id (characteristics_id),
-    CONSTRAINT fk_phone_brand_id FOREIGN KEY (brand_id) REFERENCES brand (id),
-    CONSTRAINT fk_phone_characteristic_id FOREIGN KEY (characteristics_id) REFERENCES characteristics (id)
+    CONSTRAINT fk_phone_brand_id FOREIGN KEY (brand_id) REFERENCES brand (id) on delete cascade on update cascade,
+    CONSTRAINT fk_phone_characteristic_id FOREIGN KEY (characteristics_id) REFERENCES characteristics (id) on delete cascade on update cascade
 );
 
 CREATE TABLE orderphone
@@ -84,13 +84,9 @@ CREATE TABLE orderphone
     PRIMARY KEY (id),
     KEY fk_phoneorder_order (order_id),
     KEY fk_phoneorder_phone (phone_id),
-    CONSTRAINT fk_phoneorder_order FOREIGN KEY (order_id) REFERENCES customerorder (id),
-    CONSTRAINT fk_phoneorder_phone FOREIGN KEY (phone_id) REFERENCES phone (id)
+    CONSTRAINT fk_phoneorder_order FOREIGN KEY (order_id) REFERENCES customerorder (id) on delete cascade on update cascade,
+    CONSTRAINT fk_phoneorder_phone FOREIGN KEY (phone_id) REFERENCES phone (id) on delete cascade on update cascade
 );
-
-
-
-
 
 # TEST VALUES FOR USER TABLE(password for admin : admin, password for user: user
 insert into user (first_name, second_name, email, phone_number, role, address, password)
@@ -100,14 +96,12 @@ insert into user (first_name, second_name, email, phone_number, role, address, p
 VALUES ('Юзер', 'Тест', 'user@mail.ru', '+77778888888', 0, 'ул.Пушкина, д.Колотушкина,кв.6',
         'ee11cbb19052e40b07aac0ca060c23ee');
 
-# TEST VALUES FOR brand TABLE
 INSERT INTO brand(id, brand_name) VALUES (1, 'Apple');
 INSERT INTO brand(id, brand_name) VALUES (2, 'Xiaomi');
 INSERT INTO brand(id, brand_name) VALUES (3, 'LG');
 INSERT INTO brand(id, brand_name) VALUES (4, 'Nokia');
 INSERT INTO brand(id, brand_name) VALUES (5, 'Samsung');
 
-# TEST VALUES FOR phone TABLE
 insert into characteristics(id, memory, display, screen_size, camera, front_camera, ram, processor, battery, sizes, weight) VALUES
 (1, '128 GB', 'Retina HD', '5.6', '8 megapixels', '2 megapixels', '2 GB','Apple A8', '2800 mAh','122x189x133','133 g');
 insert into phone(brand_id, model, color, model_year, price, picture_path, phone_description, characteristics_id, quantity) values
@@ -122,7 +116,6 @@ insert into characteristics(id, memory, display, screen_size, camera, front_came
 (3, '64 GB', 'Amoled', '5.8', '18 megapixels', '2 megapixels', '2 GB','Mediatek A893', '3800 mAh','122x189x133','135 g');
 insert into phone(brand_id, model, color, model_year, price, picture_path, phone_description, characteristics_id, quantity) values
 (3, 'X5', 'olive', '2018', 200000, 'https://res.cloudinary.com/dj8xzq2we/image/upload/v1611171341/epam/phones_images/LG_X5_qy123s.jpg', 'LG X5 2018 smartphone runs on Android v8.0 (Oreo) operating system. The phone is powered by Octa core (1.5 GHz, Quad core, Cortex A53 + 1 GHz, Quad core, Cortex A53) processor. It runs on the MediaTek MT6750 Chipset. It has 2 GB RAM and 32 GB internal storage. LG X5 2018 smartphone has a IPS LCD display. It measures 154.7 mm x 78.1 mm x 8.9 mm and weighs 171 grams. The screen has a resolution of HD (720 x 1280 pixels) and 267 ppi pixel density. On camera front, the buyers get a 5 MP Front Camera and on the rear, there''''s an 13 MP camera with features like Digital Zoom, Auto Flash, Face detection, Touch to focus.', 3, 5);
-
 
 insert into characteristics(id, memory, display, screen_size, camera, front_camera, ram, processor, battery, sizes, weight) VALUES
 (4, '128 GB', 'Amoled', '5.8', '18 megapixels', '2 megapixels', '2 GB','Mediatek A893', '3800 mAh','122x189x133','135 g');
