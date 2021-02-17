@@ -39,7 +39,8 @@ public class ChangeQuantityService implements Service{
                 if(id == entry.getKey().getId()){
                     productList.replace(entry.getKey(), entry.getValue()-1);
                     if(entry.getValue() == 0){
-                        iterator.remove();
+                        productList.replace(entry.getKey(), 1);
+                        //iterator.remove();
                     }
                 }
             }

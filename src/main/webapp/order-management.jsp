@@ -84,9 +84,9 @@
                     </td>
 
                     <td>
-                        <a href="/phonestore/admin/order-management/edit/form?id=<c:out value='${order.key.id}' />">Edit</a>
+                        <a href="/phonestore/admin/order-management/edit/form?id=<c:out value='${order.key.id}' />"><fmt:message key="label.edit"/></a>
                         &nbsp;&nbsp;&nbsp;&nbsp; <a
-                            href="/phonestore/admin/order-management/delete?id=<c:out value='${order.key.id}' />">Delete</a>
+                            href="/phonestore/admin/order-management/delete?id=<c:out value='${order.key.id}' />"><fmt:message key="label.delete"/></a>
                     </td>
                 </tr>
 

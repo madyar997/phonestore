@@ -25,9 +25,7 @@
         </ul>
     </div>
 </nav>
-    <h2 class="popular-smartphones">
-        <fmt:message key="label.brand.featured" />
-    </h2>
+
 <section class="products-grid" style="margin-left:300px">
     <c:forEach items="${phones}" var="phone">
         <div class="card">

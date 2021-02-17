@@ -36,7 +36,7 @@
                     <tbody>
                     <c:forEach items="${cart.productList}" var="phone">
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <td><img src="${phone.key.picture}" style="width: 50px;height: 50px" /> </td>
                             <td>${phone.key.brand} ${phone.key.model} ${phone.key.color} ${phone.key.characteristics["memory"]}</td>
                             <c:choose>
                                 <c:when test="${phone.key.quantity > '0'}">

@@ -78,11 +78,10 @@ public class CustomerOrderDao {
 
     public Map<CustomerOrder, Map<Phone, Integer>> selectAllOrdersByUserId(int userId){
         Map<CustomerOrder, Map<Phone, Integer>> customerOrders = new HashMap<>();
-        Map<Phone, Integer> productList = new HashMap<>();
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet rs = null;
-        CustomerOrder customerOrder = null;
+        CustomerOrder customerOrder;
         try {
             connection = connectionPool.getConnection();
             statement = connection.prepareStatement(SELECT_ORDERS_BY_USER_ID);
@@ -161,7 +160,6 @@ public class CustomerOrderDao {
 
     public Map<CustomerOrder, Map<Phone, Integer>> selectAllOrders(){
         Map<CustomerOrder, Map<Phone, Integer>> customerOrders = new LinkedHashMap<>();
-        Map<Phone, Integer> productList = new LinkedHashMap<>();
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet rs = null;
